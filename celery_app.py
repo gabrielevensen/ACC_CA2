@@ -24,15 +24,16 @@ celery = make_celery(app)
 
 # -------- Flask Test -------- #
 # Returns entered name
-@app.route('/test/<name>')
-def proc(name):
-    return name
-
-# -------- *1* Run celery task in Flask -------- #
-@app.route('/<name>')
+@app.route('/')
 def process1(name):
     print_str.delay(name)
     return 'OK request!'
+
+
+# -------- *1* Run celery task in Flask -------- #
+@app.route('/test/<name>')
+def proc(name):
+    return name
 
 
 # -------- *1* Run Tweet Counter in Flask -------- #
