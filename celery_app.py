@@ -6,6 +6,10 @@ import timeit
 import re
 import time
 
+
+def find_word(w):
+    return re.compile(r'\b({0})\b'.format(w), flags=re.IGNORECASE).search
+
 def make_celery(app):
     celery = Celery(app.import_name, backend='rpc://',
                     broker='pyamqp://guest@localhost//')
@@ -29,12 +33,6 @@ def process1():
     return 'OK request!'
 
 
-# -------- *1* Run celery task in Flask -------- #
-@app.route('/test/<name>')
-def proc(name):
-    return name
-
-
 # -------- *1* Run Tweet Counter in Flask -------- #
 @app.route('/task1')
 def process():
@@ -45,10 +43,8 @@ def process():
 # -------- *1* Present result in Flask -------- #
 @celery.task(name='make_celery.count_pronouns')
 def count_pronouns():
-    start = timeit.default_timer()
 
-    def find_word(w):
-        return re.compile(r'\b({0})\b'.format(w), flags=re.IGNORECASE).search
+    start = timeit.default_timer()
 
     han_counter = 0
     hon_counter = 0
@@ -112,21 +108,12 @@ def count_pronouns():
     stop = timeit.default_timer()
     timer = stop - start
 
-    #print('Time: ', stop - start)
-
     pronouns = ['han', 'hon', 'den', 'det', 'denna', 'denne', 'hen', 'Total unique tweets', 'Time for finding pronouns in seconds']
     counter = [han_counter, hon_counter, den_counter, det_counter, denna_counter, denne_counter, hen_counter,
                unique_counter, timer]
     result = dict(zip(pronouns, counter))
 
     return result
-
-    # lift = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-    # drag = ['high', 'low', 'medium', 'small', 'high', 'low', 'medium', 'high', 'small', 'small']
-    # result = dict(zip(lift, drag))
-    # time.sleep(10)
-    # return result
-
 
 
 if __name__ == '__main__':
