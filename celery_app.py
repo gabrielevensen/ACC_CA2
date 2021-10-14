@@ -22,9 +22,21 @@ def make_celery(app):
 app = Flask(__name__)
 celery = make_celery(app)
 
+# -------- Flask Test -------- #
+# Returns entered name
+@app.route('/test/<name>')
+def proc(name):
+    return name
+
+# -------- *1* Run celery task in Flask -------- #
+@app.route('/<name>')
+def process1(name):
+    print_str.delay(name)
+    return 'OK request!'
+
 
 # -------- *1* Run Tweet Counter in Flask -------- #
-@app.route('/', methods=['GET'])
+@app.route('/task1')
 def process():
     result = count_pronouns.delay()
     time.sleep(10)
