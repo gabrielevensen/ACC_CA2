@@ -48,8 +48,8 @@ def process():
 
 
 # -------- *1* Present result in Flask -------- #
-@celery.task(name='count_pronouns')
-def count_pronouns():
+@celery.task(name='word_counter')
+def word_counter():
     start = timeit.default_timer()
 
     han_counter = 0
