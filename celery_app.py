@@ -19,7 +19,7 @@ def make_celery(app):
     return celery
 
 app = Flask(__name__)
-
+celery = make_celery(app)
 
 # -------- Flask Test -------- #
 # Returns entered name
