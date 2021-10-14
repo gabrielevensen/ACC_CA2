@@ -29,13 +29,13 @@ celery = make_celery(app)
 
 # -------- *1* Run Tweet Counter in Flask -------- #
 @app.route('/count_tweets')
-def print_result():
+def process():
     result = count_pronouns.delay()
     return result.get()
 
 
 # -------- *1* Present result in Flask -------- #
-@celery.task
+@celery.task()
 def count_pronouns():
     def find_word(w):
         return re.compile(r'\b({0})\b'.format(w), flags=re.IGNORECASE).search
