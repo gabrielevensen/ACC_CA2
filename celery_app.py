@@ -25,8 +25,7 @@ celery = make_celery(app)
 # -------- Flask Test -------- #
 # Returns entered name
 @app.route('/')
-def process1(name):
-    print_str.delay(name)
+def process1():
     return 'OK request!'
 
 
