@@ -4,6 +4,7 @@ import json
 import os
 import timeit
 import re
+import time
 
 def make_celery(app):
     celery = Celery(app.import_name, backend='rpc://',

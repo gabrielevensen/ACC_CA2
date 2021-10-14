@@ -4,21 +4,27 @@ import json
 import os
 import time
 
+
 def make_celery(app):
     celery = Celery(app.import_name, backend='rpc://',
                     broker='pyamqp://guest@localhost//')
     celery.conf.update(app.config)
     TaskBase = celery.Task
+
     class ContextTask(TaskBase):
         abstract = True
+
         def __call__(self, *args, **kwargs):
             with app.app_context():
                 return TaskBase.__call__(self, *args, **kwargs)
+
     celery.Task = ContextTask
     return celery
 
+
 app = Flask(__name__)
 celery = make_celery(app)
+
 
 # -------- Flask Test -------- #
 # Returns entered name
@@ -26,11 +32,13 @@ celery = make_celery(app)
 def proc(name):
     return name
 
+
 # -------- *1* Run celery task in Flask -------- #
 @app.route('/<name>')
 def process1(name):
     print_str.delay(name)
     return 'OK request!'
+
 
 # -------- *1* Run Tweet Counter in Flask -------- #
 @app.route('/task1')
@@ -39,6 +47,7 @@ def process():
     result = count_pronouns.delay(fp)
     time.sleep(10)
     return result.get()
+
 
 # -------- *2* Tweet Counter Function TASK -------- #
 @celery.task(name='celery1.count_pronouns')
@@ -83,10 +92,12 @@ def count_pronouns(filepath):
 
     return res
 
+
 # -------- *2* A celery task -------- #
 @celery.task(name='celery_test.print_str')
 def print_str(a_string):
     return a_string
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
