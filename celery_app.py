@@ -48,7 +48,7 @@ def process():
 
 
 # -------- *1* Present result in Flask -------- #
-@celery.task(name='word_counter')
+@celery.task(name='worker1.word_counter')
 def word_counter():
     start = timeit.default_timer()
 
