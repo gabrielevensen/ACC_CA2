@@ -10,21 +10,27 @@ import time
 def find_word(w):
     return re.compile(r'\b({0})\b'.format(w), flags=re.IGNORECASE).search
 
+
 def make_celery(app):
     celery = Celery(app.import_name, backend='rpc://',
                     broker='pyamqp://guest@localhost//')
     celery.conf.update(app.config)
     TaskBase = celery.Task
+
     class ContextTask(TaskBase):
         abstract = True
+
         def __call__(self, *args, **kwargs):
             with app.app_context():
                 return TaskBase.__call__(self, *args, **kwargs)
+
     celery.Task = ContextTask
     return celery
 
+
 app = Flask(__name__)
 celery = make_celery(app)
+
 
 # -------- Flask Test -------- #
 # Returns entered name
@@ -40,10 +46,10 @@ def process():
     # time.sleep(10)
     return result.get()
 
-# -------- *1* Present result in Flask -------- #
-@celery.task(name='celery_wokrer1.count_pronouns1')
-def count_pronouns():
 
+# -------- *1* Present result in Flask -------- #
+@celery.task(name='count_pronouns')
+def count_pronouns():
     start = timeit.default_timer()
 
     han_counter = 0
@@ -108,7 +114,8 @@ def count_pronouns():
     stop = timeit.default_timer()
     timer = stop - start
 
-    pronouns = ['han', 'hon', 'den', 'det', 'denna', 'denne', 'hen', 'Total unique tweets', 'Time for finding pronouns in seconds']
+    pronouns = ['han', 'hon', 'den', 'det', 'denna', 'denne', 'hen', 'Total unique tweets',
+                'Time for finding pronouns in seconds']
     counter = [han_counter, hon_counter, den_counter, det_counter, denna_counter, denne_counter, hen_counter,
                unique_counter, timer]
     result = dict(zip(pronouns, counter))
