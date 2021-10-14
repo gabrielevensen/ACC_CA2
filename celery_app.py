@@ -41,7 +41,7 @@ def process():
     return result.get()
 
 # -------- *1* Present result in Flask -------- #
-@celery.task(name='celery_wokrer1.count_pronouns')
+@celery.task(name='celery_wokrer1.count_pronouns1')
 def count_pronouns():
 
     start = timeit.default_timer()
