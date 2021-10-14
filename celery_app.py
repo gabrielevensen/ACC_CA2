@@ -39,7 +39,7 @@ def process1(name):
 @app.route('/task1')
 def process():
     result = count_pronouns.delay()
-    time.sleep(10)
+    # time.sleep(10)
     return result.get()
 
 # -------- *1* Present result in Flask -------- #
