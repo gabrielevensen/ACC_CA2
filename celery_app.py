@@ -42,7 +42,7 @@ celery = make_celery(app)
 # -------- *1* Run Tweet Counter in Flask -------- #
 @app.route('/start_count')
 def process():
-    result = count_pronouns.delay()
+    result = word_counter.delay()
     # time.sleep(10)
     return result.get()
 
