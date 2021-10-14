@@ -6,7 +6,7 @@ import timeit
 import re
 
 def make_celery(app):
-    celery = Celery('proj', backend='rpc://',
+    celery = Celery('tasks', backend='rpc://',
                     broker='pyamqp://guest@localhost//')
     celery.conf.update(app.config)
     TaskBase = celery.Task
@@ -35,7 +35,7 @@ def process():
     return result.get()
 
 # -------- *1* Present result in Flask -------- #
-@celery.task(name='celery1.count_pronouns')
+@celery.task(name='tasks')
 def count_pronouns():
     start = timeit.default_timer()
 
