@@ -34,7 +34,7 @@ def process1():
 
 
 # -------- *1* Run Tweet Counter in Flask -------- #
-@app.route('/task1')
+@app.route('/start_count')
 def process():
     result = count_pronouns.delay()
     # time.sleep(10)
