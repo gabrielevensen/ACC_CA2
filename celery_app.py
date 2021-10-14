@@ -21,11 +21,6 @@ def make_celery(app):
 app = Flask(__name__)
 celery = make_celery(app)
 
-# -------- Flask Test -------- #
-# Returns entered name
-@app.route('/test/<name>')
-def proc(name):
-    return name
 
 # -------- *1* Run Tweet Counter in Flask -------- #
 @app.route('/task1')
