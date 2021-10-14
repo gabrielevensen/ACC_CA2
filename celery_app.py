@@ -114,8 +114,8 @@ def count_pronouns():
 
     #print('Time: ', stop - start)
 
-    pronouns = ['han', 'hon', 'den', 'det', 'denna', 'denne', 'hen', 'Total unique tweets', 'Time for finding pronouns']
-    counter = [han_counter, hon_counter, denne_counter, denna_counter, denna_counter, denne_counter, hen_counter,
+    pronouns = ['han', 'hon', 'den', 'det', 'denna', 'denne', 'hen', 'Total unique tweets', 'Time for finding pronouns in seconds']
+    counter = [han_counter, hon_counter, den_counter, det_counter, denna_counter, denne_counter, hen_counter,
                unique_counter, timer]
     result = dict(zip(pronouns, counter))
 
