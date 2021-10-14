@@ -6,7 +6,7 @@ import timeit
 import re
 
 def make_celery(app):
-    celery = Celery(app.import_name, backend='rpc://',
+    celery = Celery('proj', backend='rpc://',
                     broker='pyamqp://guest@localhost//')
     celery.conf.update(app.config)
     TaskBase = celery.Task
