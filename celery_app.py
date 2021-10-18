@@ -64,9 +64,9 @@ def word_counter():
     for subdir, dirs, files in os.walk('data'):
         for file in files:
             filepath = subdir + os.sep + file
-            file = open(filepath, 'r')
+            fil = open(filepath, 'r')
 
-            lines = file.readlines()
+            lines = fil.readlines()
             for index, line in enumerate(lines):
                 if index % 2 == 0 and 'retweeted_status' not in json.loads(line.strip()):
                     if find_word('han')(json.loads(line.strip())['text']) is not None:
