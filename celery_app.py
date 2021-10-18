@@ -85,7 +85,7 @@ def word_counter():
                         hen_counter += 1
                     unique_counter += 1
 
-    file.close()
+    fil.close()
 
     # print('Han appearing', han_counter, 'times.')
     # print('Hon appearing', hon_counter, 'times.')
