@@ -25,3 +25,10 @@ http://<Floating IP>:5000/start_count
   
   
 The deploy-vm.sh script will also guide you.
+
+
+Three pages in the flask interface:
+
+![Welcome page](welcomepage.png)
+![Count page](countpage.png)
+![Bae plot page](barplot.png)
