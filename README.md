@@ -8,3 +8,15 @@ then do the following at the ACC_CA3/Deploy folder in the terminal:
 ```
 ./deploy-vm.sh
 ```
+enter your OpenStack Password for project UPPMAX 2021/1-5 as user xxxxxx
+  
+wait for ten minutes for the insatnce to initialize
+  
+use the output presenting the floating ip of ypur newly created instance and enter the following in your browser:
+  
+```
+http://<Floating IP>:5000/start_count
+```
+  
+  
+The deploy-vm.sh script will also guide you.
