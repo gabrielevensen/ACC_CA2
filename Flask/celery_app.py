@@ -44,7 +44,7 @@ def process1():
 def process():
     result = word_counter.delay()
     # time.sleep(10)
-    return result.get()
+    return render_template('test.html', results=result.get())
 
 @app.route('/start_count/bar_plot')
 def process2():
