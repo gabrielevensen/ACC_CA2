@@ -4,9 +4,9 @@ import json
 import os
 import timeit
 import re
-import base64
-from io import BytesIO
-from matplotlib.figure import Figure
+# import base64
+# from io import BytesIO
+# from matplotlib.figure import Figure
 
 
 def find_word(w):
@@ -48,18 +48,18 @@ def process():
     # time.sleep(10)
     return result.get()
 
-@app.route("/start_count/bar_plot")
-def hello():
-    # Generate the figure **without using pyplot**.
-    fig = Figure()
-    ax = fig.subplots()
-    ax.plot([1, 2])
-    # Save it to a temporary buffer.
-    buf = BytesIO()
-    fig.savefig(buf, format="png")
-    # Embed the result in the html output.
-    data = base64.b64encode(buf.getbuffer()).decode("ascii")
-    return f"<img src='data:image/png;base64,{data}'/>"
+# @app.route("/start_count/bar_plot")
+# def hello():
+#     # Generate the figure **without using pyplot**.
+#     fig = Figure()
+#     ax = fig.subplots()
+#     ax.plot([1, 2])
+#     # Save it to a temporary buffer.
+#     buf = BytesIO()
+#     fig.savefig(buf, format="png")
+#     # Embed the result in the html output.
+#     data = base64.b64encode(buf.getbuffer()).decode("ascii")
+#     return f"<img src='data:image/png;base64,{data}'/>"
 
 
 # -------- *1* Present result in Flask -------- #
