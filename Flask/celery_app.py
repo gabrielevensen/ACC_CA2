@@ -1,5 +1,5 @@
 from celery import Celery
-from flask import Flask, jsonify
+from flask import Flask, render_template
 import json
 import os
 import timeit
@@ -44,7 +44,15 @@ celery = make_celery(app)
 def process():
     result = word_counter.delay()
     # time.sleep(10)
-    return result.get()
+    res = result.get()
+    return render_template('test.html', results=res)
+
+@app.route('/start_count/bar_plot')
+def process():
+    result = word_counter.delay()
+    # time.sleep(10)
+    res = result.get()
+    return render_template('barplot.html')
 
 
 # -------- *1* Present result in Flask -------- #

@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>This is the result</h1>
-    <h2>Results presents the following simulation {{sim_spec}}</h2>
+    <h1>Flask app by Gabriel Evensen</h1>
+    <h2>The count of the following pronouns are:</h2>
     <p>{{results}}</p>
-    <img src="Figure_1.png">
+    <h2>To see the bar plot of the following result press the link below:</h2>
+    <a href="/start_count/bar_plot">Bar Plot link</a>
 </body>
 </html>
