@@ -44,14 +44,10 @@ celery = make_celery(app)
 def process1():
     result = word_counter.delay()
     # time.sleep(10)
-    res = result.get()
-    return render_template('test.html', results=res)
+    return render_template('test.html', results=result.get())
 
 @app.route('/start_count/bar_plot')
 def process2():
-    result = word_counter.delay()
-    # time.sleep(10)
-    res = result.get()
     return render_template('barplot.html')
 
 
