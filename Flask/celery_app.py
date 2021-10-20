@@ -41,14 +41,14 @@ celery = make_celery(app)
 
 # -------- *1* Run Tweet Counter in Flask -------- #
 @app.route('/start_count')
-def process():
+def process1():
     result = word_counter.delay()
     # time.sleep(10)
     res = result.get()
     return render_template('test.html', results=res)
 
 @app.route('/start_count/bar_plot')
-def process():
+def process2():
     result = word_counter.delay()
     # time.sleep(10)
     res = result.get()
