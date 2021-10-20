@@ -36,7 +36,7 @@ celery = make_celery(app)
 # Returns entered name
 @app.route('/')
 def process1():
-    return 'OK request!'
+    return render_template('welcome.html')
 
 
 # -------- *1* Run Tweet Counter in Flask -------- #

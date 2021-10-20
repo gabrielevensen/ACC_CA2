@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to my Flask app</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>This app will count pronouns in a big number of unique tweets</h1>
+    <h2>Start the count by entering the link below: prepare to wait for about 150 seconds to get a result:</h2>
+    <a href="/start_count">Start the count</a>
+    <h2>The count has been done before, enter link below to see the bar plot:</h2>
+    <a href="/start_count/bar_plot">Bar Plot</a>
+</body>
+</html>
