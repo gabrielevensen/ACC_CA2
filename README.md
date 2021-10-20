@@ -29,6 +29,6 @@ The deploy-vm.sh script will also guide you.
 
 Three pages in the flask interface:
 
-![Welcome page](welcomepage.png)
+![Welcome page](Welcomepage.png)
 ![Count page](countpage.png)
 ![Bae plot page](barplot.png)
