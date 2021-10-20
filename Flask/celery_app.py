@@ -91,15 +91,8 @@ def word_counter():
 
     fil.close()
 
-    # print('Han appearing', han_counter, 'times.')
-    # print('Hon appearing', hon_counter, 'times.')
-    # print('Den appearing', den_counter, 'times.')
-    # print('Det appearing', det_counter, 'times.')
-    # print('Denna appearing', denna_counter, 'times.')
-    # print('Denne appearing', denne_counter, 'times.')
-    # print('Hen appearing', hen_counter, 'times.')
-    # print('Number of unique tweets:', unique_counter, '.')
-    #
+
+    # Code for creating the plot.
     # objects = ('Han', 'Hon', 'Den', 'Det', 'Denna', 'Denne', 'Hen')
     # y_pos = np.arange(len(objects))
     # performance = [han_counter / unique_counter, hon_counter / unique_counter,
