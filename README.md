@@ -62,7 +62,7 @@ or
 
 ```
 <Floating Ip>:5000/start_count/bar_plot
-
+```
 
 
 Three pages in the flask interface:
