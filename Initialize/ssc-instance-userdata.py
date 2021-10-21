@@ -13,8 +13,8 @@ private_net = "UPPMAX 2021/1-5 Internal IPv4 Network"
 floating_ip_pool_name = "Public External IPv4 Network"
 floating_ip = None
 image_name = "Ubuntu 18.04"
-keypair = "keykey"
-vmname = "nejhajhajhaj"
+keypair = "<enter key-pair without .pem>"
+vmname = "<enter vmname here>"
 
 loader = loading.get_plugin_loader('password')
 
