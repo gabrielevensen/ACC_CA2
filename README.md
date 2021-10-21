@@ -26,6 +26,29 @@ http://<Floating IP>:5000/start_count
   
 The deploy-vm.sh script will also guide you.
 
+Log into your vm with:
+
+```
+ssh -i <keypair-name.pem> ubuntu@<Floating IP>
+```
+Enter ACC_CA3/Flask, then type:
+
+```
+screen
+```
+Followed by:
+```
+celery -A tasks worker --loglevel=info
+```
+Create a new screen 
+```
+ctrl+A ctrl+A
+```
+Then type:
+```
+python3 celery_app.py
+```
+
 
 Three pages in the flask interface:
 
