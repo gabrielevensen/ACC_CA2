@@ -8,7 +8,7 @@ keypair = _<key pair in your folder, example if key.pem enter just key>_
 
 instancename = enter a name
   
-then do the following at the ACC_CA3/Deploy folder in the terminal:
+then do the following at the ACC_CA3/Initialize folder in the terminal:
 
 ```
 ./deploy-vm.sh
