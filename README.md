@@ -48,6 +48,21 @@ Then type:
 ```
 python3 celery_app.py
 ```
+Type the following in your browser:
+
+```
+<Floating Ip>:5000/
+```
+or
+
+```
+<Floating Ip>:5000/start_count
+```
+or
+
+```
+<Floating Ip>:5000/start_count/bar_plot
+
 
 
 Three pages in the flask interface:
